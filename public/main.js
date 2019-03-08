@@ -11,16 +11,23 @@ function getFromFirebase() {
         Object.keys(oTodos).map((key) => {
             let oElement = document.createElement("p");
             oElement.innerHTML = oTodos[key].taskName;
+            oElement.innerHTML += "<button class=\"deleteTask\" id=\"" + key + "\">x</button>";
             oTaskList.prepend(oElement);
         });
     });
+}
+
+function deleteTodo(sKey){
+    if(sKey){
+        alert("deleted" + sKey);
+    }
 }
 
 window.addEventListener("load", ()=>{
     //document is loaded now
     firebase.initializeApp(config);
     getFromFirebase();
-
+    deleteTodo();
     document.getElementById("taskForm").addEventListener("submit", (evt)=>{
         evt.preventDefault();
         let sTask = document.getElementById("task").value;
