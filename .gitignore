@@ -2,3 +2,4 @@ node_modules
 dist
 .cache
 firebase.js
+package-lock.json
